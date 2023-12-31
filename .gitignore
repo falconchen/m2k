@@ -1,0 +1,6 @@
+/data/
+.env
+.vscode/
+/src/info.php
+/log/
+/sql/
