@@ -1,13 +1,12 @@
-ARG PHP_FPM_VERSION=8.2.7-fpm
-FROM php:${PHP_FPM_VERSION}
-RUN apt update -y && apt install -y  libwebp-dev libjpeg-dev libpng-dev libfreetype6-dev zlib1g-dev curl \
-    nodejs npm  && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+ARG PHP_FPM_VERSION=8.2.14
+FROM falconchen/php-fpm:${PHP_FPM_VERSION}
 
-RUN curl -sSLf \
-        -o /usr/local/bin/install-php-extensions \
-        https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions && \
-    chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions gd mysqli zlib imagick exif zip intl pdo_mysql redis
+RUN cd /usr/local/etc/php/ \
+&& cp php.ini-development php.ini \
+&& echo 'alias ll="ls -la"' | tee /root/.bashrc \
+&& composer global require laravel/installer \ 
+&& apt update && apt install -y vim lsof\
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/*
 
-COPY --from=composer/composer:2-bin /composer /usr/local/bin/composer
+ENV PATH="/root/.config/composer/vendor/laravel/installer/bin:${PATH}"

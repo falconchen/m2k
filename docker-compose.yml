@@ -12,9 +12,9 @@ services:
     ports:
       - "${NGINX_ADDR_PORT:-80}:80"
     volumes:
-      - ./src:/var/www/html      
+      - ./src:/var/www/src      
       - ./log/nginx:/log/nginx
-      - ./default.conf:/etc/nginx/conf.d/default.conf    
+      - ./laravel.conf:/etc/nginx/conf.d/default.conf    
     depends_on:
       - php-fpm
 
@@ -22,14 +22,15 @@ services:
     build:
       context: docker/php-fpm
       args:
-        PHP_FPM_VERSION: ${PHP_FPM_VERSION:-8.2.7-fpm}
+        PHP_FPM_VERSION: ${PHP_FPM_VERSION:-8.2.14}
     restart: always
     env_file:
       - .env
+    ports:
+      - 5173:5173
     volumes:
-      - ./src:/var/www/html
-      - ./docker/profile.d:/etc/profile.d
-      - ${PHP_INI:-./php-prod.ini}:/usr/local/etc/php/php.ini
+      - ./src:/var/www/src
+      - ./php-dev.ini:/usr/local/etc/php/php.ini
       
   db:
     command: --max_allowed_packet=256M
