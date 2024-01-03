@@ -22,7 +22,7 @@ services:
     build:
       context: docker/php-fpm
       args:
-        PHP_FPM_VERSION: ${PHP_FPM_VERSION:-8.2.14}
+        PHP_FPM_VERSION: ${PHP_FPM_VERSION:-8.2.14}        
     restart: always
     env_file:
       - .env

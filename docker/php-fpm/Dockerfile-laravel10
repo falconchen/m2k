@@ -1,5 +1,4 @@
 ARG PHP_FPM_VERSION=8.2.14
-
 FROM falconchen/php-fpm:${PHP_FPM_VERSION}
 
 RUN cd /usr/local/etc/php/ \
@@ -10,8 +9,5 @@ RUN cd /usr/local/etc/php/ \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
-RUN echo 'cd /var/www/src/m2k' >>/root/.bashrc
 ENV PATH="/root/.config/composer/vendor/laravel/installer/bin:${PATH}"
-
-
 

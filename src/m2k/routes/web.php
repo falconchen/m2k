@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Livewire\Counter;
+
+Route::get('/counter', Counter::class);
 
 Route::view('/', 'welcome')->name('home');
 
