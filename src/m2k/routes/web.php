@@ -24,7 +24,7 @@ use App\Livewire\Counter;
 
 Route::get('/counter', Counter::class);
 
-Route::view('/', 'welcome')->name('home');
+Route::view('/', 'home')->name('home');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)

@@ -30,13 +30,13 @@ module.exports = {
     https://github.com/tailwindlabs/tailwindcss/discussions/6557
     https://tailwindcss.com/docs/content-configuration#safelisting-classes
     **/
-    safelist: [
-    {
-      pattern: /./,
-    //   variants: ['lg', 'hover', 'focus', 'lg:hover'], //上面的pattern不会包含带 : 的类，但打开这条会内存不足，fuck
-    },
+    // safelist: [
+    // {
+    //   pattern: /./,
+    // //   variants: ['lg', 'hover', 'focus', 'lg:hover'], //上面的pattern不会包含带 : 的类，但打开这条会内存不足，fuck
+    // },
 
-    ],
+    // ],
 
     plugins: [
         require('@tailwindcss/forms'),
