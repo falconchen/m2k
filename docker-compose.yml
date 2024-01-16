@@ -16,9 +16,9 @@ services:
       - ./log/nginx:/log/nginx
       - ./laravel.conf:/etc/nginx/conf.d/default.conf    
     depends_on:
-      - php-fpm
+      - m2k
 
-  php-fpm:
+  m2k:
     build:
       context: docker/php-fpm
       args:
@@ -31,7 +31,22 @@ services:
     volumes:
       - ./src:/var/www/src
       - ./php-dev.ini:/usr/local/etc/php/php.ini
-      
+
+  m2k-queue:
+    build:
+      context: docker/php-fpm
+      args:
+        PHP_FPM_VERSION: ${PHP_FPM_VERSION:-8.2.14}        
+    restart: always
+    env_file:
+      - .env         
+    volumes:
+      - ./src:/var/www/src
+      - ./php-dev.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - m2k 
+    command: php /var/www/src/m2k/artisan queue:work         
+
   db:
     command: --max_allowed_packet=256M
     image: mariadb:10.5.9
