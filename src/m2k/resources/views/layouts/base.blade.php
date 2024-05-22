@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @hasSection('title')
 
-            <title>@yield('title') - {{ config('app.name') }}</title>
-        @else
-            <title>{{ config('app.name') }}</title>
-        @endif
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @if(request()->header('X-Forwarded-Proto') == 'https')
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    @endif
+    @hasSection('title')
 
-        <!-- Favicon -->
-		<link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+    <title>@yield('title') - {{ config('app.name') }}</title>
+    @else
+    <title>{{ config('app.name') }}</title>
+    @endif
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
 
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-        @livewireStyles
-        @livewireScripts
+    <!-- Fonts -->
+    {{--
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css"> --}}
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-    </head>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- <script src="https://cdn.tailwindcss.com/3.4.1"></script> --}}
 
-    <body>
-        @yield('body')
-    </body>
+
+
+    {{-- @livewireStyles
+    @livewireScripts --}}
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+
+<body class="flex flex-col">
+    @include('layouts.navbar')
+    @yield('body')
+    @include('layouts.footer')
+</body>
+
 </html>
