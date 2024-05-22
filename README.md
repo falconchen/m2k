@@ -15,3 +15,7 @@
 [Laravel](https://laravel.com/docs)
 
 [Livewire](https://livewire.laravel.com/docs)
+
+### 新特性
+
+- 20240522 [实现zlibrary的PREMIUM功能：免费将电子书发送到亚马逊 kindle个人文档](https://d.cellmean.com/p/0682b43ee842)

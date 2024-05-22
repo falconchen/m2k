@@ -84,8 +84,8 @@ Route::post('/zlib-gmail-mailgun-notify', function(Request  $request){
                 'title' => $originalFileName,
                 'body' => '',
                 'file_path' => $filePath,
-                'user_id' => 1,
-                'kindle_email' => 'wonderfulcxm@kindle.com',
+                'user_id' => config('services.mailgun.m2k_user_id'),
+                'kindle_email' => config('services.mailgun.m2k_kindl_email'),
                 'uploaded_time' => now(),
                 'sent_time' => null,
             ]);
