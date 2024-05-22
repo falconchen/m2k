@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // });
 
 
+
 Route::post('/zlib-gmail-mailgun-notify', function(Request  $request){       
 
     $data = $request->all();
@@ -85,7 +86,7 @@ Route::post('/zlib-gmail-mailgun-notify', function(Request  $request){
                 'body' => '',
                 'file_path' => $filePath,
                 'user_id' => config('services.mailgun.m2k_user_id'),
-                'kindle_email' => config('services.mailgun.m2k_kindl_email'),
+                'kindle_email' => config('services.mailgun.m2k_kindle_email'),
                 'uploaded_time' => now(),
                 'sent_time' => null,
             ]);
