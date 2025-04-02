@@ -22,7 +22,7 @@
                 </code> to the <a class="underline hover:no-underline" target="_blank" href="https://www.amazon.com/hz/mycd/myx#/home/settings/payment"">Approved Personal Document E-mail List.</a>
             </summary>
             <p>
-                <img src="https://photo.cellmean.com/i/2024/01/26/txu15t-0.png" alt="add to your kindle Approved Personal Document E-mail List"/>
+                <img src="https://photo.cellmean.com/i/2024/11/11/ny8etv-0.png" alt="add to your kindle Approved Personal Document E-mail List"/>
             </p>
         </details>
 
